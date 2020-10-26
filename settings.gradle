@@ -1,0 +1,3 @@
+include ':LogLib'
+include ':app'
+rootProject.name = "HenLog"
