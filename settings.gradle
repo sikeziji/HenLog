@@ -1,3 +1,4 @@
+include ':UILib'
 include ':LogLib'
 include ':app'
 rootProject.name = "HenLog"
