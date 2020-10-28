@@ -22,13 +22,15 @@ import com.wangj.uilib.tab.common.IHenTab;
  * @ProjectName: HenLog
  * @Package: com.wangj.uilib.tab.common
  * @ClassName: HenTabBottom
- * @Description: java类作用描述
+ * @Description 自定义View 底部标签栏
  * @Author: wangj
  * @CreateDate: 2020/10/27 17:39
  * @Version: 1.0
  */
 public class HenTabBottom extends RelativeLayout implements IHenTab<HenTabBottomInfo<?>> {
+    // 底部Tab信息
     private HenTabBottomInfo<?> tabInfo;
+    //视图组件
     private ImageView tabImageView;
     private TextView tabIconView;
     private TextView tabNameView;
@@ -49,6 +51,9 @@ public class HenTabBottom extends RelativeLayout implements IHenTab<HenTabBottom
 
     //endregion
 
+    /**
+     * 初始化视图
+     */
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.hen_tab_bottom, this);
         tabImageView = findViewById(R.id.iv_image);
@@ -91,7 +96,9 @@ public class HenTabBottom extends RelativeLayout implements IHenTab<HenTabBottom
      * @param init     是否需要初始化
      */
     private void inflateInfo(boolean selected, boolean init) {
+        //判断当前Tab类型是否为ICOn
         if (tabInfo.tabType == HenTabBottomInfo.TabType.ICON) {
+            //解决初始化问题
             if (init) {
                 tabImageView.setVisibility(GONE);
                 tabIconView.setVisibility(VISIBLE);
@@ -102,6 +109,7 @@ public class HenTabBottom extends RelativeLayout implements IHenTab<HenTabBottom
                 }
             }
 
+            //视图选中进行的组件变化
             if (selected) {
                 tabIconView.setText(TextUtils.isEmpty(tabInfo.selectedIconName) ? tabInfo.defaultIconName : tabInfo.selectedIconName);
                 tabIconView.setTextColor(getTextColor(tabInfo.tintColor));
@@ -112,7 +120,10 @@ public class HenTabBottom extends RelativeLayout implements IHenTab<HenTabBottom
                 tabNameView.setTextColor(getTextColor(tabInfo.defaultColor));
             }
 
-        } else if (tabInfo.tabType == HenTabBottomInfo.TabType.BITMAP) {
+        }
+//            判断当前Tab类型是否为ICOn
+        else if (tabInfo.tabType == HenTabBottomInfo.TabType.BITMAP) {
+            //解决初始化问题
             if (init) {
                 tabImageView.setVisibility(VISIBLE);
                 tabIconView.setVisibility(GONE);
@@ -120,6 +131,7 @@ public class HenTabBottom extends RelativeLayout implements IHenTab<HenTabBottom
                     tabNameView.setText(tabInfo.name);
                 }
             }
+            //视图选中进行的组件变化
             if (selected) {
                 tabImageView.setImageBitmap(tabInfo.selectedBitmap);
             } else {
@@ -138,6 +150,7 @@ public class HenTabBottom extends RelativeLayout implements IHenTab<HenTabBottom
     }
 
 
+    //region 视图组件Get方法
     public HenTabBottomInfo<?> getTabInfo() {
         return tabInfo;
     }
@@ -153,4 +166,5 @@ public class HenTabBottom extends RelativeLayout implements IHenTab<HenTabBottom
     public TextView getTabNameView() {
         return tabNameView;
     }
+    //endregion
 }

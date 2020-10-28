@@ -2,10 +2,13 @@ package com.wangj.henlog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.wangj.henlog.demo.BottomActicity;
+import com.wangj.henlog.demo.LogActivity;
 import com.wangj.loglib.HenLog;
 import com.wangj.loglib.HenLogConfig;
 import com.wangj.loglib.HenLogManager;
@@ -16,8 +19,8 @@ import com.wangj.loglib.impl.HenViewPrinter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn_log;
-    private HenViewPrinter viewPrinter = null;
+    private Button btn_Logactivity;
+    private Button btn_Bootomactivity;
 
 
     @Override
@@ -30,32 +33,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
 
-        btn_log = findViewById(R.id.btn_log);
-        viewPrinter = new HenViewPrinter(this);
+        btn_Logactivity = findViewById(R.id.btn_Logactivity);
+        btn_Bootomactivity = findViewById(R.id.btn_Bootomactivity);
 
-        btn_log.setOnClickListener(new View.OnClickListener() {
+        btn_Logactivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                printLog();
+                startActivity(new Intent(MainActivity.this, LogActivity.class));
             }
         });
-        if (viewPrinter != null) {
-            viewPrinter.getViewProvider().showFloatingView();
-        }
-
-    }
-
-    private void printLog() {
-        HenLogManager.getInstance().addPrinter(viewPrinter);
-
-        HenLog.log(new HenLogConfig() {
+        btn_Bootomactivity.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean includeThread() {
-                return false;
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, BottomActicity.class));
             }
-        }, HenLogType.E, "---", "5566");
-        HenLog.a("9900");
+        });
 
     }
+
 
 }

@@ -2,6 +2,7 @@ package com.wangj.uilib.tab.common;
 
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * @CreateDate: 2020/10/27 17:24
  * @Version: 1.0
  */
-interface IHenTabLayout<Tab extends ViewGroup, D> {
+public interface IHenTabLayout<Tab extends ViewGroup, D> {
 
     /**
      * 根据数据查询 Tab
@@ -31,6 +32,8 @@ interface IHenTabLayout<Tab extends ViewGroup, D> {
      * @param listener
      */
     void addTabSelectChangeListener(OnTabSelectedListener<D> listener);
+
+    void defaultSelected(@NonNull D defaultInfo);
 
     /**
      * 填入信息
