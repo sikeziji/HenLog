@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".demo.BottomActicity" />
         <activity android:name=".demo.LogActivity" />
+        <activity android:name=".demo.TopActivity" />
     </application>
 
 </manifest>

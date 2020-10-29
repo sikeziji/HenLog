@@ -33,7 +33,8 @@ import java.util.List;
  * @CreateDate: 2020/10/28 10:19
  * @Version: 1.0
  */
-public class HenTabBottomLayout extends FrameLayout implements IHenTabLayout<HenTabBottom, HenTabBottomInfo<?>> {
+public class HenTabBottomLayout extends FrameLayout implements IHenTabLayout<HenTabBottom,
+        HenTabBottomInfo<?>> {
     private static final String TAG_TAB_BOTTOM = "TAG_TAB_BOTTOM";
 
     //数据列表
